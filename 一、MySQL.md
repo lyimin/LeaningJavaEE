@@ -79,14 +79,32 @@
 
 多建一张中间表，将多对多的关系拆成一对多的关系，中间表至少要有两个外键：这两个外键分别指向原来的表
 
-### 18、内连接查询
-- 隐式内连接
+### 18、多表查询
+
+- 交叉查询
+- 连接查询
+	- 内连接（inner join）:查询结果为两个表有关联的部分
+		- 显示内连接
+		- 隐式内连接
+	- 外连接
+		- 左外连接（left outer join）:查询结果为左表全部内容+右表有关联的部分
+		- 右外连接（right outer join）:查询结果为右表全部内容+左表有关联的部分
+- 子查询
+
+隐式内连接
 
 ```SELECT * FROM user AS u, category AS c WHERE u.cid=c.cid```
 
-- 显式内连接
+显式内连接
 
 ```select * FROM user AS u INNER JOIN category AS c ON u.cid=c.cid```
+
+左外连接
+
+```select * from user left outer join category where user.uid = category.cid```
+右外连接
+
+```select * from category right outer join category where category.cid=user.uid```
 
 ### 18、分页（LIMITE）
 - 第一个参数：索引
